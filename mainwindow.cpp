@@ -926,3 +926,15 @@ void MainWindow::on_pushButton_clicked()
         ui->comboPort->addItem (port.portName());
     }
 }
+
+void MainWindow::on_SendData_clicked()
+{
+    QString port = ui->InputData->text();
+
+    char *a = (char*)port.toUtf8().data(); //конвертация из string в const char *data
+    //QMessageBox::information(this, "Сообщение", "ВЫ ввели данные: " + port);
+
+    serialPort->write(a);
+    //serialPort->waitForBytesWritten(); // раотает без этого??
+
+}
